@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library | Sathyabama Institute of Science and Technology</title>
+    <link rel="icon" href="sathyabama-logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-image: url('https://www.sathyabama.ac.in/sites/default/files/inline-images/0O3A0535.jpg');
+            background-origin: padding-box;
+            background-position-x: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header {
+            background-color: #9c1e4c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 15px;
+        }
+        input {
+        width: 200px; 
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+        header h1 {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem auto;
+            width: 93%;
+            max-width: 1400px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            padding: 0.75rem 1rem;
+            border: none;
+            background-color: #9c1e4c;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        button i {
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #831238;
+            transform: scale(1.05);
+        }
+
+
+        .form-container {
+            display: none;
+            width: 110%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 1rem;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+            color: #831238;
+        }
+
+        .input-with-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        input {
+            width: 100%;
+            max-width: 575px;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .output {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f0f0f5;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            button {
+                font-size: 0.85rem;
+                padding: 0.6rem 0.8rem;
+            }
+
+            .form-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://www.sathyabama.ac.in/themes/custom/sathyabama/logo.svg" alt="Sathyabama Logo" class="logo">
+            <h1>Sathyabama Library</h1>
+        </div>
+    </header>
+    <div class="container">
+        <div class="buttons-container">
+            <button onclick="showForm('add')"><i class="fas fa-plus"></i> Add Book</button>
+            <button onclick="showForm('delete')"><i class="fas fa-trash"></i> Delete Book</button>
+            <button onclick="showForm('modify')"><i class="fas fa-edit"></i> Modify Book</button>
+            <button onclick="showForm('retrieve')"><i class="fas fa-search"></i> Retrieve Book</button>
+            <button onclick="showForm('rack')"><i class="fas fa-archive"></i> Rack Book</button>
+            <button onclick="showForm('lend')"><i class="fas fa-hand-holding"></i> Lend Book</button>
+        </div>
+
+        <!-- Add Book Form -->
+        <div id="addForm" class="form-container">
+            <h2>Add Book</h2>
+            <div class="input-with-button">
+                <input type="text" id="addBarcode" placeholder="Enter Barcode">
+                <button onclick="scanBarcode('addBarcode')"><i class="fas fa-barcode"></i> Scan</button>
+            </div>
+            <input type="text" id="addBookName" placeholder="Book Name">
+            <input type="text" id="addAuthor" placeholder="Author">
+            <input type="date" id="addPublishedDate">
+            <input type="text" id="addGenre" placeholder="Genre">
+            <button onclick="addBook()"><i class="fas fa-paper-plane"></i> Submit</button>
+        </div>
+
+        <!-- Delete Book Form -->
+        <div id="deleteForm" class="form-container">
+            <h2>Delete Book</h2>
+            <div class="input-with-button">
+                <input type="text" id="deleteBarcode" placeholder="Enter Barcode" >
+                <button onclick="scanBarcode('deleteBarcode')">Scan Barcode</button>
+            </div>
+            <button onclick="deleteBook()">Delete Book</button>
+        </div>
+
+        <!-- Modify Book Form -->
+        <div id="modifyForm" class="form-container">
+            <h2>Modify Book</h2>
+            <div class="input-with-button">
+                <input type="text" id="modifyBarcode" placeholder="Enter Barcode">
+                <button onclick="scanBarcode('modifyBarcode')">Scan Barcode</button>
+            </div>
+            <input type="text" id="modifyBookName" placeholder="New Book Name">
+            <input type="text" id="modifyAuthor" placeholder="New Author">
+            <input type="date" id="modifyPublishedDate">
+            <input type="text" id="modifyGenre" placeholder="New Genre">
+            <button onclick="modifyBook()">Modify Book</button>
+        </div>
+
+        <!-- Retrieve Book Form -->
+        <div id="retrieveForm" class="form-container">
+            <h2>Retrieve Book</h2>
+            <div class="input-with-button">
+                <input type="text" id="retrieveBarcode" placeholder="Enter Barcode">
+                <button onclick="scanBarcode('retrieveBarcode')">Scan Barcode</button>
+            </div>
+            <button onclick="retrieveBook()">Retrieve Book</button>
+            <div id="retrievedBookDetails" class="output"></div>
+        </div>
+
+        <!-- Rack Book Form -->
+        <div id="rackForm" class="form-container">
+            <h2>Rack Book</h2>
+            <div class="input-with-button">
+                <input type="text" id="rackBookBarcode" placeholder="Enter Book Barcode">
+                <button onclick="scanBarcode('rackBookBarcode')">Scan Barcode</button>
+            </div>
+            <div class="input-with-button">
+                <input type="text" id="rackLocationBarcode" placeholder="Enter Rack Barcode">
+                <button onclick="scanBarcode('rackLocationBarcode')">Scan Barcode</button>
+            </div>
+            <input type="number" id="rackQuantity" placeholder="Quantity" min="1" value="1">
+            <button onclick="rackBook()">Rack Book</button>
+        </div>
+
+        <!-- Lend Book Form -->
+        <div id="lendForm" class="form-container">
+            <h2>Lend Book</h2>
+            <div class="input-with-button">
+                <input type="text" id="lendBarcode" placeholder="Enter Barcode">
+                <button onclick="scanBarcode('lendBarcode')">Scan Barcode</button>
+            </div>
+            <button onclick="lendBook()">Lend Book</button>
+        </div>
+
+        <div id="output" class="output"></div>
+    </div>
+
+    <script>
+        const backendUrl = 'http://127.0.0.1:5001';
+
+        function showForm(formId) {
+            document.querySelectorAll('.form-container').forEach(form => form.style.display = 'none');
+            document.getElementById(formId + 'Form').style.display = 'block';
+        }
+
+        async function scanBarcode(inputId) {
+            try {
+                const response = await fetch(`${backendUrl}/scan`);
+                const { barcode } = await response.json();
+                if (barcode) {
+                    document.getElementById(inputId).value = barcode;
+                } else {
+                    alert('No barcode detected.');
+                }
+            } catch (error) {
+                console.error('Error scanning barcode:', error);
+            }
+        }
+
+        async function addBook() {
+            const data = {
+                Barcode: document.getElementById('addBarcode').value,
+                BookName: document.getElementById('addBookName').value,
+                Author: document.getElementById('addAuthor').value,
+                PublishedDate: document.getElementById('addPublishedDate').value,
+                Genre: document.getElementById('addGenre').value,
+            };
+            await handleRequest(`${backendUrl}/books/add`, 'POST', data);
+        }
+
+        async function deleteBook() {
+            const data = { Barcode: document.getElementById('deleteBarcode').value };
+            await handleRequest(`${backendUrl}/books/delete`, 'POST', data);
+        }
+
+        async function modifyBook() {
+            const data = {
+                Barcode: document.getElementById('modifyBarcode').value,
+                BookName: document.getElementById('modifyBookName').value,
+                Author: document.getElementById('modifyAuthor').value,
+                PublishedDate: document.getElementById('modifyPublishedDate').value,
+                Genre: document.getElementById('modifyGenre').value,
+            };
+            await handleRequest(`${backendUrl}/books/modify`, 'PUT', data);
+        }
+
+        async function retrieveBook() {
+            const data = { Barcode: document.getElementById('retrieveBarcode').value };
+            const response = await fetch(`${backendUrl}/books/retrieve`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            const outputDiv = document.getElementById('retrievedBookDetails');
+            if (result.error) {
+                outputDiv.textContent = result.error;
+            } else {
+                outputDiv.textContent = JSON.stringify(result, null, 2);
+            }
+        }
+
+        async function rackBook() {
+            const data = {
+                BookBarcode: document.getElementById('rackBookBarcode').value,
+                LocationBarcode: document.getElementById('rackLocationBarcode').value,
+                Quantity: parseInt(document.getElementById('rackQuantity').value),
+            };
+            await handleRequest(`${backendUrl}/location/rack`, 'POST', data);
+        }
+
+        async function lendBook() {
+            const data = { Barcode: document.getElementById('lendBarcode').value };
+            await handleRequest(`${backendUrl}/books/lend`, 'POST', data);
+        }
+
+        async function handleRequest(url, method, data) {
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+                document.getElementById('output').textContent = JSON.stringify(result, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
+

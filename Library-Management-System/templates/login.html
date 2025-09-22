@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sathyabama Library</title>
+    <link rel="icon" href="sathyabama-logo.png">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #333;
+            background-image: url('https://www.sathyabama.ac.in/sites/default/files/inline-images/0O3A0535.jpg');
+            background-origin: padding-box;
+            background-position-x: 50%;
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        header {
+            background-color: #9c1e4c;
+            color: white;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+        .box {
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 2px solid #9c1e4c;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+        .container {
+            padding: 2rem;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .form-group {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: black;
+            font-weight: 100;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            background-color: #9c1e4c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #831238;
+        }
+
+        .role-selection {
+            margin-bottom: 20px;
+        }
+
+        .role-selection label {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://www.sathyabama.ac.in/themes/custom/sathyabama/logo.svg" alt="Sathyabama Logo" class="logo">
+        </div>
+        <h1>Login Page</h1>
+    </header>
+
+    <!-- New Box Section -->
+    <div class="box">
+        <h2>Welcome to the Portal</h2>
+        <p>Please select your role and log in to continue.</p>
+    </div>
+
+    <div class="box">
+        <div class="container">
+            <!-- Role Selection Dropdown -->
+            <div class="role-selection">
+                <label for="role">Select Role:</label>
+                <select id="role" name="role" onchange="toggleLoginForm()">
+                    <option value="">Select...</option>
+                    <option value="admin">Admin</option>
+                    <option value="student">Student</option>
+                </select>
+            </div>
+    
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="return handleLogin(event)">
+                <div class="form-group" id="emailGroup" style="display:none;">
+                    <label for="email">Email ID:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                </div>
+    
+                <div class="form-group" id="registerNumberGroup" style="display:none;">
+                    <label for="registerNumber">Register Number:</label>
+                    <input type="text" id="registerNumber" name="registerNumber" placeholder="Enter your register number">
+                </div>
+    
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password">
+                </div>
+    
+                <button type="submit" class="button">Login</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+
+    <script>
+        function toggleLoginForm() {
+            const role = document.getElementById('role').value;
+            const emailGroup = document.getElementById('emailGroup');
+            const registerNumberGroup = document.getElementById('registerNumberGroup');
+            
+            if (role === 'admin') {
+                emailGroup.style.display = 'block';
+                registerNumberGroup.style.display = 'none';
+            } else if (role === 'student') {
+                emailGroup.style.display = 'none';
+                registerNumberGroup.style.display = 'block';
+            } else {
+                emailGroup.style.display = 'none';
+                registerNumberGroup.style.display = 'none';
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();  // Prevent form submission to handle custom logic
+
+            const role = document.getElementById('role').value;
+            const email = document.getElementById('email').value;
+            const registerNumber = document.getElementById('registerNumber').value;
+            const password = document.getElementById('password').value;
+
+            if (!role || !password) {
+                alert('Please select a role and enter all fields.');
+                return;
+            }
+
+            // Check if all required fields are filled based on the role
+            if ((role === 'admin' && !email) || (role === 'student' && !registerNumber)) {
+                alert('Please enter all required information.');
+                return;
+            }
+
+            // Redirect based on role
+            if (role === 'admin') {
+                window.location.href = 'index.html';  // Redirect to admin page (index.html)
+            } else if (role === 'student') {
+                window.location.href = 'user.html';  // Redirect to student page (user.html)
+            }
+        }
+    </script>
+
+</body>
+</html>

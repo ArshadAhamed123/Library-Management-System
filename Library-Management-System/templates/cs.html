@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Science Books</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #9c1e4c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .container {
+            padding: 2rem;
+        }
+
+        .books-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .book {
+            text-align: center;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .book img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .book h3 {
+            font-size: 1.1rem;
+            margin: 0;
+            color: #831238;
+        }
+
+        .book h3 a {
+            text-decoration: none;
+            color: #831238;
+        }
+
+        .book h3 a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://www.sathyabama.ac.in/themes/custom/sathyabama/logo.svg" alt="Sathyabama Logo" class="logo">
+        </div>
+        <h1>Computer Science Books</h1>
+    </header>
+
+    <div class="container">
+        <div class="books-list">
+            <div class="book">
+                <img src="c++.jpg" alt="Introduction to C and C++">
+                <h3><a href="c.html" target="_blank">Introduction to C and C++</a></h3>
+            </div>
+            <div class="book">
+                <img src="java.jpg" alt="Java Programming">
+                <h3><a href="java_programming.html" target="_blank">Java Programming</a></h3>
+            </div>
+            <div class="book">
+                <img src="dsa.jpg" alt="Data Structures and Algorithms">
+                <h3><a href="dsa.html" target="_blank">Data Structures and Algorithms</a></h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

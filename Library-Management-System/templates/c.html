@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to C and C++</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #9c1e4c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-container {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .book-image {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .book-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #831238;
+        }
+
+        .description, .location {
+            font-size: 18px;
+            color: #333;
+            margin: 1rem 0;
+        }
+
+        .location {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        .location p {
+            margin: 0;
+        }
+
+        .location ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .location ul li {
+            margin: 5px 0;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #9c1e4c;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            background-color: #831238;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="https://www.sathyabama.ac.in/themes/custom/sathyabama/logo.svg" alt="Sathyabama Logo" class="logo">
+        </div>
+        <h1>Introduction to C and C++</h1>
+    </header>
+
+    <div class="container">
+        <!-- Book Image -->
+        <div class="book-image">
+            <img src="c++.jpg" alt="Introduction to C and C++ Book">
+        </div>
+
+        <!-- Book Title Below the Image -->
+        <div class="book-title">
+            <h4>Introduction to C and C++</h4>
+        </div>
+
+        <!-- Book Description -->
+        <div class="description">
+            <h3>Book Description:</h3>
+            <p>
+                This is one of the best books for learning C for both beginner and advanced-level programmers. 
+                Written by Erik Myers, it has sold over 2.5 million copies worldwide so far and has been widely 
+                translated into different languages. The new edition gives an overview of arrays, functions, operators, 
+                expressions, structures, etc., as per ANSI standards. The insight of this book also covers the newest C 
+                libraries, variable-length arrays, inline functions, etc. For better understanding and brushing skillset, 
+                it comes with a variety of examples and exercises at the end of every unit which you can solve to master 
+                in C language.
+            </p>
+        </div>
+        <div class="description"> 
+            <h3>Availability: 2 Copies Available.</h3>
+        </div>
+
+        <!-- Location Section -->
+        <div class="description">
+            <h3>Location Of Book:</h3>
+            <ul>
+                <li><strong>Floor:</strong> 01</li>
+                <li><strong>Aisle:</strong> 03</li>
+                <li><strong>Shelf:</strong> 06</li>
+                <li><strong>Rack:</strong> 02</li>
+            </ul>
+        </div>
+        <div class="description"> 
+            <h3>Do you want to reserve this book?</h3>
+            <a href="reserved.html">
+                <button class="button">Yes</button>
+            </a> <!-- "Yes" Button linked to reserved.html -->
+        </div>
+    </div>
+
+</body>
+</html>
